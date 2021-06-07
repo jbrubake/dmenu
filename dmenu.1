@@ -60,6 +60,12 @@ is faster, but will lock up X until stdin reaches end\-of\-file.
 .B \-i
 dmenu matches menu items case insensitively.
 .TP
+.B \-F
+Enable fuzzy matching.
+.TP
+.B \-s
+Disable sorting menu items.
+.TP
 .BI \-l " lines"
 dmenu lists items vertically, with the given number of lines.
 .TP
@@ -75,6 +81,9 @@ defines the prompt to be displayed to the left of the input field.
 .TP
 .BI \-fn " font"
 defines the font or font set used.
+.TP
+.BI \-bw " width"
+defines the window border width
 .TP
 .BI \-nb " color"
 defines the normal background color.
