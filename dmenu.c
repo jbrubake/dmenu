@@ -59,7 +59,7 @@ static Drw *drw;
 static Clr *scheme[SchemeLast];
 
 /* Temporary arrays to allow overriding xresources values */
-static char *colortemp[4];
+static char *colortemp[SchemeLast*2];
 static char *tempfonts;
 
 #include "config.h"
@@ -750,11 +750,10 @@ setup(void)
 	for (j = 0; j < SchemeLast; j++) {
 		scheme[j] = drw_scm_create(drw, (const char**)colors[j], 2);
 	}
-	for (j = 0; j < SchemeOut; ++j) {
+	for (j = 0; j < SchemeLast; ++j) {
 		for (i = 0; i < 2; ++i)
 			free(colors[j][i]);
 	}
-
 	clip = XInternAtom(dpy, "CLIPBOARD",   False);
 	utf8 = XInternAtom(dpy, "UTF8_STRING", False);
 
@@ -894,6 +893,30 @@ readxresources(void) {
 			colors[SchemeSel][ColFg] = strdup(xval.addr);
 		else
 			colors[SchemeSel][ColFg] = strdup(colors[SchemeSel][ColFg]);
+		if (XrmGetResource(xdb, "dmenu.hiforeground", "*", &type, &xval))
+			colors[SchemeNormHighlight][ColFg] = strdup(xval.addr);
+		else
+			colors[SchemeNormHighlight][ColFg] = strdup(colors[SchemeNormHighlight][ColFg]);
+		if (XrmGetResource(xdb, "dmenu.hibackground", "*", &type, &xval))
+			colors[SchemeNormHighlight][ColBg] = strdup(xval.addr);
+		else
+			colors[SchemeNormHighlight][ColBg] = strdup(colors[SchemeNormHighlight][ColBg]);
+		if (XrmGetResource(xdb, "dmenu.hiselforeground", "*", &type, &xval))
+			colors[SchemeSelHighlight][ColFg] = strdup(xval.addr);
+		else
+			colors[SchemeSelHighlight][ColFg] = strdup(colors[SchemeSelHighlight][ColFg]);
+		if (XrmGetResource(xdb, "dmenu.hiselbackground", "*", &type, &xval))
+			colors[SchemeSelHighlight][ColBg] = strdup(xval.addr);
+		else
+			colors[SchemeSelHighlight][ColBg] = strdup(colors[SchemeSelHighlight][ColBg]);
+		if (XrmGetResource(xdb, "dmenu.outforeground", "*", &type, &xval))
+			colors[SchemeOut][ColFg] = strdup(xval.addr);
+		else
+			colors[SchemeOut][ColFg] = strdup(colors[SchemeOut][ColFg]);
+		if (XrmGetResource(xdb, "dmenu.outbackground", "*", &type, &xval))
+			colors[SchemeOut][ColBg] = strdup(xval.addr);
+		else
+			colors[SchemeOut][ColBg] = strdup(colors[SchemeOut][ColBg]);
 
 		XrmDestroyDatabase(xdb);
 	}
@@ -945,13 +968,17 @@ main(int argc, char *argv[])
 		else if (!strcmp(argv[i], "-sf"))  /* selected foreground color */
 			colortemp[3] = argv[++i];
 		else if (!strcmp(argv[i], "-nhb")) /* normal hi background color */
-			colors[SchemeNormHighlight][ColBg] = argv[++i];
+			colortemp[4] = argv[++i];
 		else if (!strcmp(argv[i], "-nhf")) /* normal hi foreground color */
-			colors[SchemeNormHighlight][ColFg] = argv[++i];
+			colortemp[5] = argv[++i];
 		else if (!strcmp(argv[i], "-shb")) /* selected hi background color */
-			colors[SchemeSelHighlight][ColBg] = argv[++i];
+			colortemp[6] = argv[++i];
 		else if (!strcmp(argv[i], "-shf")) /* selected hi foreground color */
-			colors[SchemeSelHighlight][ColFg] = argv[++i];
+			colortemp[7] = argv[++i];
+		else if (!strcmp(argv[i], "-ob")) /* out background color */
+			colortemp[8] = argv[++i];
+		else if (!strcmp(argv[i], "-of")) /* out foreground color */
+			colortemp[9] = argv[++i];
 		else if (!strcmp(argv[i], "-w"))   /* embedding window id */
 			embed = argv[++i];
 		else if (!strcmp(argv[i], "-bw"))
@@ -983,6 +1010,18 @@ main(int argc, char *argv[])
 	   colors[SchemeSel][ColBg]  = strdup(colortemp[2]);
 	if ( colortemp[3])
 	   colors[SchemeSel][ColFg]  = strdup(colortemp[3]);
+	if ( colortemp[4])
+	   colors[SchemeNormHighlight][ColFg]  = strdup(colortemp[4]);
+	if ( colortemp[5])
+	   colors[SchemeNormHighlight][ColBg]  = strdup(colortemp[5]);
+	if ( colortemp[6])
+	   colors[SchemeSelHighlight][ColFg]  = strdup(colortemp[6]);
+	if ( colortemp[7])
+	   colors[SchemeSelHighlight][ColBg]  = strdup(colortemp[7]);
+	if ( colortemp[8])
+	   colors[SchemeOut][ColFg]  = strdup(colortemp[8]);
+	if ( colortemp[9])
+	   colors[SchemeOut][ColBg]  = strdup(colortemp[9]);
 
 	if (!drw_fontset_create(drw, (const char**)fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
