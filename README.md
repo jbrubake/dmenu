@@ -22,3 +22,15 @@ Afterwards enter the following command to build and install dmenu
 Running dmenu
 -------------
 See the man page for details.
+
+Patches Applied
+---------------
+
+- border option
+- center
+- fuzzymatch
+- line height
+- listfullwidth
+- no sort
+- xresources (modified to include additional resources)
+
