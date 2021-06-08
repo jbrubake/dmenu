@@ -28,7 +28,6 @@ Patches Applied
 
 - border option
 - center
-- fuzzymatch
 - line height
 - listfullwidth
 - no sort
