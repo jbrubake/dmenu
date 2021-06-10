@@ -31,7 +31,10 @@ stest: stest.o
 clean:
 	rm -f dmenu stest $(OBJ) dmenu-$(VERSION).tar.gz
 
-dist: clean
+distclean: clean
+	rm config.h
+
+dist: distclean
 	mkdir -p dmenu-$(VERSION)
 	cp LICENSE Makefile README arg.h config.def.h config.mk dmenu.1\
 		drw.h util.h dmenu_path dmenu_run stest.1 $(SRC)\
@@ -61,4 +64,4 @@ uninstall:
 		$(DESTDIR)$(MANPREFIX)/man1/dmenu.1\
 		$(DESTDIR)$(MANPREFIX)/man1/stest.1
 
-.PHONY: all options clean dist install uninstall
+.PHONY: all options clean distclean dist install uninstall
