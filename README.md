@@ -26,10 +26,10 @@ See the man page for details.
 Patches Applied
 ---------------
 
-- border option
-- center
-- line height
-- listfullwidth
-- no sort
-- xresources (modified to include additional resources)
+- dmenu-border-4.9.diff
+- dmenu-center-20200111-8cd37e1.diff
+- dmenu-lineheight-5.0.diff
+- dmenu-listfullwidth-5.0.diff
+- dmenu-nosort-5.0.diff
+- dmenu-xresources-4.9.diff (modified to include additional resources)
 
