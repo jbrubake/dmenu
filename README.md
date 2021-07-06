@@ -33,3 +33,16 @@ Patches Applied
 - dmenu-nosort-5.0.diff
 - dmenu-xresources-4.9.diff (modified to include additional resources)
 
+Stay Synced with Upstream
+-------------------------
+
+After cloning this repo, add the upstream repository and create a branch to
+track upstream/master
+
+```sh
+$ git remote add upstream "https://git.suckless.org/dmenu"
+$ git fetch upstream
+$ git branch upstream upstream/master
+```
+
+
