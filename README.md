@@ -32,6 +32,7 @@ Patches Applied
 - dmenu-listfullwidth-5.0.diff
 - dmenu-nosort-5.0.diff
 - dmenu-xresources-4.9.diff (modified to include additional resources)
+- dmenu-password-5.0.diff
 
 Stay Synced with Upstream
 -------------------------
