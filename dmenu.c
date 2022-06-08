@@ -865,6 +865,8 @@ readxresources(void) {
 			colors[SchemeOut][ColBg] = strdup(xval.addr);
 		else
 			colors[SchemeOut][ColBg] = strdup(colors[SchemeOut][ColBg]);
+		if (XrmGetResource(xdb, "dmenu.borderwidth", "*", &type, &xval))
+			border_width = atoi(xval.addr); /* border width */
 
 		XrmDestroyDatabase(xdb);
 	}
@@ -875,6 +877,8 @@ main(int argc, char *argv[])
 {
 	XWindowAttributes wa;
 	int i, fast = 0;
+    unsigned int border_width_temp = 0;
+    bool got_borderwidth = false;
 
 	for (i = 1; i < argc; i++)
 		/* these options take no arguments */
@@ -931,8 +935,10 @@ main(int argc, char *argv[])
 			colortemp[9] = argv[++i];
 		else if (!strcmp(argv[i], "-w"))   /* embedding window id */
 			embed = argv[++i];
-		else if (!strcmp(argv[i], "-bw"))
-			border_width = atoi(argv[++i]); /* border width */
+		else if (!strcmp(argv[i], "-bw")) {
+			border_width_temp = atoi(argv[++i]); /* border width */
+            got_borderwidth = true;
+        }
 		else
 			usage();
 
@@ -972,6 +978,8 @@ main(int argc, char *argv[])
 	   colors[SchemeOut][ColFg]  = strdup(colortemp[8]);
 	if ( colortemp[9])
 	   colors[SchemeOut][ColBg]  = strdup(colortemp[9]);
+    if (got_borderwidth)
+        border_width = border_width_temp;
 
 	if (!drw_fontset_create(drw, (const char**)fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
