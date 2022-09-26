@@ -804,11 +804,10 @@ setup(void)
 static void
 usage(void)
 {
-	fputs("usage: dmenu [-bcfiFPSv] [-l lines] [-h height] [-p prompt] [-fn font] [-m monitor]\n"
+	die("usage: dmenu [-bcfiFPSv] [-l lines] [-h height] [-p prompt] [-fn font] [-m monitor]\n"
           "             [-bw width]\n"
 	      "             [-nb color] [-nf color] [-sb color] [-sf color]\n"
-	      "             [-nhb color] [-nhf color] [-shb color] [-shf color] [-w windowid]\n", stderr);
-	exit(1);
+	      "             [-nhb color] [-nhf color] [-shb color] [-shf color] [-w windowid]\n");
 }
 
 void
