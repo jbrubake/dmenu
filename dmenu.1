@@ -3,36 +3,7 @@
 dmenu \- dynamic menu
 .SH SYNOPSIS
 .B dmenu
-.RB [ \-bfivP ]
-.RB [ \-l
-.IR lines ]
-.RB [ \-h
-.IR height ]
-.RB [ \-m
-.IR monitor ]
-.RB [ \-p
-.IR prompt ]
-.RB [ \-fn
-.IR font ]
-.RB [ \-nb
-.IR color ]
-.RB [ \-nf
-.IR color ]
-.RB [ \-sb
-.IR color ]
-.RB [ \-sf
-.IR color ]
-.RB [ \-nhb
-.IR color ]
-.RB [ \-nhf
-.IR color ]
-.RB [ \-shb
-.IR color ]
-.RB [ \-shf
-.IR color ]
-.RB [ \-w
-.IR windowid ]
-.P
+.RB [ OPTIONS ]
 .BR dmenu_run " ..."
 .SH DESCRIPTION
 .B dmenu
@@ -63,14 +34,8 @@ dmenu matches menu items case insensitively.
 .B \-P
 dmenu will not directly display the keyboard input, but instead replace it with asterisks. All data from stdin will be ignored.
 .TP
-.B \-F
-Enable fuzzy matching.
-.TP
 .B \-S
 dmenu does not sort menu items after matching.
-.TP
-.B \-P
-dmenu will not directly display the keyboard input, but instead replace it with asterisks. All data from stdin will be ignored.
 .TP
 .BI \-l " lines"
 dmenu lists items vertically, with the given number of lines.
@@ -118,11 +83,17 @@ defines the selected highlight background color.
 .BI \-shf " color"
 defines the selected highlight foreground color.
 .TP
-.B \-v
-prints version information to stdout, then exits.
+.BI \-ob " color"
+defines the out background color.
+.TP
+.BI \-of " color"
+defines the out foreground color.
 .TP
 .BI \-w " windowid"
 embed into windowid.
+.TP
+.B \-v
+prints version information to stdout, then exits.
 .SH USAGE
 dmenu is completely controlled by the keyboard.  Items are selected using the
 arrow keys, page up, page down, home, and end.
