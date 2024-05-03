@@ -26,24 +26,26 @@ See the man page for details.
 Patches Applied
 ---------------
 
-- dmenu-border-4.9.diff
+- dmenu-borderoption-20200217-bf60a1e.diff
 - dmenu-center-20200111-8cd37e1.diff
+- dmenu-fuzzyhighlight-4.9.diff
 - dmenu-lineheight-5.0.diff
 - dmenu-listfullwidth-5.0.diff
-- dmenu-nosort-5.0.diff
 - dmenu-xresources-4.9.diff (modified to include additional resources)
-- dmenu-password-5.0.diff
+- dmenu-nosort-5.0.diff
+- dmenu-password-5.0.diff (change mask character to `*` instead of `.`)
+- Add a `make distclean` target to delete `config.h`
+- Add support for color emojis
 
 Stay Synced with Upstream
 -------------------------
 
-After cloning this repo, add the upstream repository and create a branch to
-track upstream/master
+After cloning this repo, add the upstream repository as a remote:
 
-```sh
-$ git remote add upstream "https://git.suckless.org/dmenu"
-$ git fetch upstream
-$ git branch upstream upstream/master
-```
+    $ git remote add upstream "https://git.suckless.org/dmenu"
 
+To merge changes from upstream:
+
+    $ git fetch upstream
+    $ git merge upstream/master
 
