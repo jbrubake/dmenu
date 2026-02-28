@@ -36,12 +36,7 @@ Patches Applied
 - dmenu-password-5.0.diff : dmenu will not directly display the keyboard input, but instead replace it with dots (local change: set mask character to `*` instead of `.`)
 - dmenu-xresources-4.9.diff : adds the ability to configure dmenu via Xresources
 
-
-    dmenu-fuzzymatch-4.9.diff
-    dmenu-fzfexpect-5.1.diff
-    dmenu-fzfexpectmulti-5.1.diff
-    dmenu-tsv-20201101-1a13d04.diff
-
+    Look at the tsv-alt patch : display what's before \t and print what's after
 
 Local Changes
 -------------
