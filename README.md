@@ -26,14 +26,20 @@ See the man page for details.
 Patches Applied
 ---------------
 
-- dmenu-borderoption-20200217-bf60a1e.diff
-- dmenu-center-20200111-8cd37e1.diff
-- dmenu-fuzzyhighlight-4.9.diff
-- dmenu-lineheight-5.0.diff
-- dmenu-listfullwidth-5.0.diff
-- dmenu-xresources-4.9.diff (modified to include additional resources)
-- dmenu-nosort-5.0.diff
-- dmenu-password-5.0.diff (change mask character to `*` instead of `.`)
+- dmenu-borderoption-20200217-bf60a1e.diff : 
+- dmenu-center-20200111-8cd37e1.diff : centers dmenu in the middle of the screen
+- dmenu-fuzzyhighlight-4.9.diff : highlight the fuzzy matching characters of item
+- dmenu-lineheight-5.0.diff : adds a '-h' option, which sets the minimum height of a dmenu line
+- dmenu-listfullwidth-5.0.diff : vertical lists use full width instead of indenting items
+- dmenu-nosort-5.0.diff : adds the -S option to disable sorting menu items after matching
+- dmenu-password-5.0.diff : dmenu will not directly display the keyboard input, but instead replace it with dots (local change: set mask character to `*` instead of `.`)
+- dmenu-xresources-4.9.diff : adds the ability to configure dmenu via Xresources
+
+Local Changes
+-------------
+
+- dmenu-password : set mask character to `*` instead of `.`
+- dmenu-xresources: include additional resources
 - Add a `make distclean` target to delete `config.h`
 - Add support for color emojis
 
