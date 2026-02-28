@@ -29,7 +29,7 @@ Patches Applied
 - dmenu-borderoption-20200217-bf60a1e.diff : 
 - dmenu-center-20250407-b1e217b.diff : centers dmenu in the middle of the screen
 - dmenu-fuzzyhighlight-5.3.diff : highlight the fuzzy matching characters of item
-- dmenu-lineheight-5.0.diff : adds a '-h' option, which sets the minimum height of a dmenu line
+- dmenu-lineheight-5.2.diff : adds a '-h' option, which sets the minimum height of a dmenu line
 - dmenu-listfullwidth-5.0.diff : vertical lists use full width instead of indenting items
 - dmenu-nosort-5.0.diff : adds the -S option to disable sorting menu items after matching
 - dmenu-password-5.0.diff : dmenu will not directly display the keyboard input, but instead replace it with dots (local change: set mask character to `*` instead of `.`)
