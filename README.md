@@ -27,7 +27,7 @@ Patches Applied
 ---------------
 
 - dmenu-borderoption-20200217-bf60a1e.diff : 
-- dmenu-center-20200111-8cd37e1.diff : centers dmenu in the middle of the screen
+- dmenu-center-20250407-b1e217b.diff : centers dmenu in the middle of the screen
 - dmenu-fuzzyhighlight-4.9.diff : highlight the fuzzy matching characters of item
 - dmenu-lineheight-5.0.diff : adds a '-h' option, which sets the minimum height of a dmenu line
 - dmenu-listfullwidth-5.0.diff : vertical lists use full width instead of indenting items

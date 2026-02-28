@@ -33,6 +33,7 @@ enum { SchemeNorm, SchemeSel, SchemeNormHighlight, SchemeSelHighlight,
 
 struct item {
 	char *text;
+	unsigned int width;
 	struct item *left, *right;
 	int out;
 };
@@ -109,7 +110,7 @@ max_textw(void)
 {
 	int len = 0;
 	for (struct item *item = items; item && item->text; item++)
-		len = MAX(TEXTW(item->text), len);
+		len = MAX(item->width, len);
 	return len;
 }
 
@@ -635,6 +636,7 @@ readstdin(void)
 			line[len - 1] = '\0';
 		if (!(items[i].text = strdup(line)))
 			die("strdup:");
+		items[i].width = TEXTW(line);
 
 		items[i].out = 0;
 	}
@@ -743,7 +745,7 @@ setup(void)
 		if (centered) {
 			mw = MIN(MAX(max_textw() + promptw, min_width), info[i].width);
 			x = info[i].x_org + ((info[i].width  - mw) / 2);
-			y = info[i].y_org + ((info[i].height - mh) / 2);
+			y = info[i].y_org + ((info[i].height - mh) / menu_height_ratio);
 		} else {
 			x = info[i].x_org;
 			y = info[i].y_org + (topbar ? 0 : info[i].height - mh);
