@@ -9,7 +9,7 @@ OBJ = $(SRC:.c=.o)
 all: dmenu stest
 
 .c.o:
-	$(CC) -c $(CFLAGS) $<
+	$(CC) -c $(CFLAGS) -fPIE $<
 
 config.h:
 	cp config.def.h $@
@@ -17,10 +17,10 @@ config.h:
 $(OBJ): arg.h config.h config.mk drw.h
 
 dmenu: dmenu.o drw.o util.o
-	$(CC) -o $@ dmenu.o drw.o util.o $(LDFLAGS)
+	$(CC) -o $@ dmenu.o drw.o util.o $(LDFLAGS) -pie
 
 stest: stest.o
-	$(CC) -o $@ stest.o $(LDFLAGS)
+	$(CC) -o $@ stest.o $(LDFLAGS) -pie
 
 clean:
 	rm -f dmenu stest $(OBJ) dmenu-$(VERSION).tar.gz
